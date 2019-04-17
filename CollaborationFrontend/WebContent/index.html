@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body ng-app="app">
+<div class="container">
+<nav class="navbar navbar-default" >
+<div  class="navbar-header">
+<button type="button" class="navbar-toggle collapsed" 
+   data-toggle="collapse" data-target="#collapse-example" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+</div>
+<div class="collapse navbar-collapse" id="collapse-example">
+
+ <ul class="nav navbar-nav navbar-right">
+
+
+<li><a href="#/register"  ng-show="user==undefined"> <span  class="glyphicon glyphicon-book">REGISTER</span></a></li>
+<li><a href="#/login" ng-show="user==undefined"><span class="glyphicon glyphicon-log-in">LOGIN</span></a></li>
+<li><a href="" ng-show="user!=undefined">Welcome&nbsp;{{user.firstname}}{{user.lastname}}</a>
+<td><li><a href="" ng-click="logout()"   ng-show="user!=undefined"><span class="glyphicon glyphicon-log-out">LOGOUT</span></a></li></td></li>	
+
+ </ul>
+ 
+<ul class="nav navbar-nav navbar-center">
+
+<li><a href="#/uploadprofilepic" ng-show="user!=undefined">
+    <img src="http://localhost:8006/CollaborationMiddleware/getimage?email={{user.email}}" class="img-rounded"
+							alt="No Profile Pic" height="40px" width="40px"></a></li>
+<li><a href="#/addjob" ng-show="user.role=='ADMIN'">Add Job</a></li>
+
+ 
+<li class="dropdown">
+   <a href="#" class="dropdown-toggle" data-toggle="dropdown" ng-show="user!=undefined"><span class="caret"></span>Blog</a>
+ <ul class="dropdown-menu">
+  <li><a href="#/addblogpost">Add Blog</a></li>
+  <li><a href="#/blogsapproved">Blogs Approved</a></li>
+  <li><a href="#/blogswaitingforapproval" ng-show="user.role=='ADMIN'">Blogs waiting for Approval</a></li>
+</ul>
+</li> 					
+<li><a href="#/getalljobs" ng-show="user!=undefined" >Find jobs Here</a></li>
+<li><a href="#/updateuserprofile" ng-show="user!=undefined">Edit UserProfile</a></li>
+
+<li><a href="#/chat" ng-show="user!=undefined">Chat</a></li>
+
+<li class="dropdown">
+		<a href="#" class="dropdown-toggle" data-toggle="dropdown" ng-show="user!=undefined">Friend<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#/suggestedusers">Suggested users</a></li>
+         <li><a href="#/pendingrequests">Pending Requests</a></li>
+          <li><a href="#/listoffriends">Friends</a></li>
+</ul>
+</li>
+
+<li class="dropdown" >
+           <a href="" class="dropdown-toggle" data-toggle="dropdown" ng-show="user.email!=undefined"> 
+        <span  class="glyphicon glyphicon-bell" > 
+      <span class="rw-number-notification" ng-if="notificationCount>0">{{notificationCount}}</span></span></a>
+          <ul class="dropdown-menu" >
+       <span class="dropdown-content">
+      <li ng-repeat="notification in notifications">
+      <a href="#/getnotification/{{notification.notificationId}}">Blog titled "<b>{{notification.blogTitle}} "</b>approval status is updated </a>
+     <hr>
+   </li>
+   </span>
+   </ul>
+</li>
+
+
+</ul>
+</div>
+</nav>
+</div>
+<div class="container">
+
+<div ng-view></div>
+</div>
+</body>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="resources/css/glyphiconcolor.css">
+<link rel="stylesheet" href="resources/css/register.css">
+<link rel="stylesheet" href="resources/css/job.css">
+
+<link rel="stylesheet" href="resources/css/notification.css">
+<link rel="stylesheet" href="Js/assets/common/portfolio.css">
+<link rel="stylesheet" href="resources/imageuploadtheme/css/theme.css">
+<link rel="stylesheet" href="resources/imageuploadtheme/css/fileinput.css" type="text/css" media="all">
+<link rel="stylesheet" href="resources/imageuploadtheme/css/fileinput.min.css" type="text/css" media="all">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular-route.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular-cookies.js"></script>
+<script type="text/javascript" src="Js/app.js"></script>
+<script type="text/javascript" src="Js/fileinput.js"></script>
+<script type="text/javascript" src="Js/jquery.js"></script>
+<script type="text/javascript" src="Js/fileinput.min.js"></script>
+
+<script type="text/javascript" src="Js/themes/explorer/theme.js"></script>
+<script type="text/javascript" src="Js/themes/fa/theme.js"></script>
+<script type="text/javascript" src="Js/themes/gly/theme.js"></script>
+<script type="text/javascript" src="resources/imageuploadtheme/js/fileinput.js"></script>
+<script type="text/javascript" src="resources/imageuploadtheme/js/fileinput.min.js"></script>
+<script type="text/javascript" src="resources/themes/explorer/theme.js"></script>
+<script type="text/javascript" src="resources/themes/fa/theme.js"></script>
+<script type="text/javascript" src="resources/themes/gly/theme.js"></script>
+
+<script type="text/javascript" src="Js/sockjs/sockjs.js"></script>
+<script type="text/javascript" src="Js/sockjs/sockjs.min.js"></script>
+<script type="text/javascript" src="Js/stomp/dist/stomp.min.js"></script>
+<script type="text/javascript" src="Js/stomp/dist/stomp.js"></script>
+<script type="text/javascript" src="Js/stomp/src/stomp.orig.js"></script>
+
+<script type="text/javascript" src="Controllers/JobController.js"></script>
+<script type="text/javascript" src="Services/JobService.js"></script>
+
+<script type="text/javascript" src="Controllers/UserController.js"></script>
+<script type="text/javascript" src="Services/UserService.js"></script>
+
+<script type="text/javascript" src="Controllers/BlogPostController.js"></script>
+<script type="text/javascript" src="Controllers/BlogsInDetailController.js"></script>
+<script type="text/javascript" src="Services/BlogPostService.js"></script>
+
+<script type="text/javascript" src="Controllers/NotificationController.js"></script>
+<script type="text/javascript" src="Services/NotificationService.js"></script>
+
+
+<script type="text/javascript" src="Controllers/FriendController.js"></script>
+<script type="text/javascript" src="Services/FriendService.js"></script>
+
+<script type="text/javascript" src="Services/ChatService.js"></script>
+<script type="text/javascript" src="Controllers/ChatController.js"></script>
+
+</html>

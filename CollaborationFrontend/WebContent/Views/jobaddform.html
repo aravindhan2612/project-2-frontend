@@ -1,0 +1,70 @@
+<style>
+body {
+  background-image: url("resources/images/job.jpg");
+  background-size:1500px 750px;
+  background-repeat:no-repeat;
+}
+
+</style>
+
+
+<div ng-show="user.role!='ADMIN'">
+<h2>You are not eligible to add anyJob details</h2>
+</div>
+<div ng-show="user.role=='ADMIN'">
+
+<h3 align=center>ADD JOB</h3>
+<form>
+<div class="row">
+     <div class="col-25">
+     <label>Enter JobTitle</label>
+     </div>
+     <div class="col-50"><input type="text" ng-model="job.jobTitle">
+</div></div>
+<div class="row">
+     <div class="col-25">
+     <label>Enter JobDescription</label>
+     </div>
+     <div class="col-50"><textarea ng-model=job.jobDescription></textarea>
+</div></div>
+
+<div class="row">
+     <div class="col-25">
+     <label>Location</label>
+</div>
+    <div class="col-50"><input type="text" ng-model="job.location" required>
+</div> </div>
+<div class="row">
+     <div class="col-25">
+<label>Qualification </label>
+</div>
+<div class="col-50"><input type="text" ng-model="job.qualification" required>
+</div></div>
+<div class="row">
+  
+<div class="col-25">
+<label>Years Of Experience</label></div>
+<div class="col-50"><input type="text" ng-model="job.yrsOfExp">
+</div></div>
+<div class="row">
+     <div class="col-25">
+<label>Skills Required</label>
+</div>
+<div class="col-50"><input type="text" ng-model="job.skillsRequired" required>
+</div></div>
+<div class="row">
+     <div class="col-25">
+<label>Reference</label>
+</div>
+<div class="col-50"><input type="text" ng-model="job.reference">
+</div></div>
+<div class="row">
+     <div class="col-25">
+<label>Salary</label>
+</div>
+<div class="col-50"><input type="text" ng-model="job.Salary">
+</div></div>
+
+<button align=center ng-click="addJob()" class="btn btn-success">ADD JOB</button>
+</form>
+</div>

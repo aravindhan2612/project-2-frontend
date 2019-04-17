@@ -1,0 +1,42 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">
+<b>Blog Title  :</b>{{blogPost.blogTitle}}<br>
+<b>PostedOn    :</b>{{blogPost.postedOn | date:'dd-MMM-yyyy hh:mm:ss'}}<br>
+<b>Author's Email:</b>{{blogPost.author.email}}<br>
+<b>Posted By   :</b>{{blogPost.author.firstname}}&nbsp;{{blogPost.author.lastname}}
+	</div>
+	<div class=panel-body>
+		<div>
+			<p ng-bind-html="content">
+				<br>
+		</div>
+		<div>
+			<a ng-click="updateLikes(blogPost.blogPostId)"><span
+				class="glyphicon glyphicon-thumbs-up"
+				ng-class="isLiked?'liked':'default'"></span></a> likes{{blogPost.likes}}<br>
+				
+			<textarea rows="4" cols="70" ng-model="commentTxt"></textarea><br>
+			<button ng-click="addBlogComment(commentTxt,blogPost)" class="btn btn-primary">POST COMMENT</button><br>
+			<span ng-show="blogComment!==undefined">
+			{{blogComment.commentTxt}}&nbsp;<b>PostedBy:</b>you,&nbsp<b>PostedOn</b>{{blogComment.commentedOn | date:'dd-MMM-yyyy hh:mm:ss'}}
+			</span>
+		 <a ng-click="getAllBlogComments(blogPost.blogPostId)">ShowComments</a><br>
+			<ul ng-repeat="blogComment in blogComments">
+			 <li>
+			    {{blogComment.commentTxt}} &nbsp; <b>PostedBy::</b>
+			    <span ng-show="blogComment.commentedBy.email!=user.email">
+			    {{blogComment.commentedBy.firstname}} &nbsp;{{blogComment.commentedBy.lastname}}
+			    </span>
+			    <span ng-show="blogComment.commentedBy.email==user.email">You</span>
+			    <b>PostedOn::</b>{{blogComment.commentedOn | date:'dd-MMM-yyyy hh:mm:ss'}}
+			    <br>
+			    <a href="" ng-click="deleteBlogComment(blogComment)"><span ng-show="user.email==blogComment.commentedBy.email" class="pull-right glyphicon glyphicon-trash" title="Delete This Comment"></span>Delete</a> 
+			    
+			 </li>
+			</ul> 
+			
+		</div>
+	</div>
+
+
+

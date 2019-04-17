@@ -1,0 +1,17 @@
+ @charset "ISO-8859-1";
+.form-box {
+    width: 90%;
+    margin: auto;
+    padding-top:10px;
+}
+
+.form-box h1 {
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: tomato;
+}
+
+.form-box h1 span {
+    font-weight: lighter;
+} 

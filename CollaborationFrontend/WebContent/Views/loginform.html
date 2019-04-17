@@ -1,0 +1,120 @@
+
+<style>
+body {
+	  background-image: url("resources/images/login1.jpg");
+	  background-size:1500px 750px;
+	  background-repeat:no-repeat;
+	}
+
+.redborder {
+    border:2px solid #f96145;
+    border-radius:2px;
+}
+
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: normal;
+}
+
+.row {
+    padding: 15px 0px;
+}
+
+.bigicon {
+    font-size: 97px;
+    color: #f96145;
+}
+
+.contcustom {
+    text-align: center;
+    width: 300px;
+    border-radius: 0.5rem;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 10px auto;
+    background-color: white;
+    padding: 20px;
+}
+
+input {
+    width: 100%;
+    margin-bottom: 17px;
+    padding: 15px;
+    background-color: #ECF4F4;
+    border-radius: 2px;
+    border: none;
+}
+
+h2 {
+    margin-bottom: 150px;
+    font-weight: bold;
+    color: #ABABAB;
+}
+
+.btn {
+    border-radius: 2px;
+    padding: 10px;
+}
+
+.med {
+    font-size: 27px;
+    color: white;
+}
+
+.medhidden {
+    font-size: 27px;
+    color: #f96145;
+    padding: 10px;
+    width:100%;
+}
+
+.wide {
+    background-color: #8EB7E4;
+    width: 100%;
+    -webkit-border-top-right-radius: 0;
+    -webkit-border-bottom-right-radius: 0;
+    -moz-border-radius-topright: 0;
+    -moz-border-radius-bottomright: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+</style>
+<span style="color:red">{{error.errorMessage}}</span>
+ 
+<div class="container">
+    <div class="row colored">
+        <div id="contentdiv" class="form-box">
+        <h2 align="center">LOGIN FORM</h2>
+            <span class="fa fa-spinner bigicon"></span>
+            <div align="center">
+            Login with the registered mailId
+                <h4>Email</h4><div class="input-group">
+                        <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
+                      <input type="email" placeholder="Username" ng-model="user.email" required="required" />
+                    </div>
+             
+                <h4>Password</h4><div class="input-group">
+                        <div class="input-group-addon"><span class="glyphicon glyphicon-ruble"></span></div>
+                     <input type="password" placeholder="Password" ng-model="user.password" required="required"/>
+                    </div>
+                     <br>  
+                     <div class="input-group">
+        <input type="submit" class="btn btn-success" ng-click="login(user)" value="Login"/>
+        </div>
+      </div>
+            <div>
+                <p align="right"><a class="btn btn-link" class="text-muted">Forgot Password?</a></p>
+                
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+
